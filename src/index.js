@@ -1,7 +1,4 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import { registerImage } from "./lazy";
 
 // Funcion random
 const minimun = 1
@@ -33,5 +30,7 @@ const addImage = () => {
   const newImage = createImageNode()
   // Mount image
   mountNode.append(newImage)
+  // Lazy Loading
+  registerImage(newImage)
 }
 addButton.addEventListener('click', addImage)
