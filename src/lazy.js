@@ -3,15 +3,21 @@ const isIntersecting = (entry) => {
   return entry.isIntersecting //true (dentro de la pantalla)
 }
 
-const accion = (entry) => {
-  const nodo = entry.target
-  console.log('Get it')
+const loadImage = (entry) => {
+  const container = entry.target // representa el contenedor en este caso al div
+  const imagen = container.firstChild
+  const url = imagen.dataset.src 
+
+  //Cargar la imagen 
+  imagen.src = url
+
+  console.log(container.nodeName)
   // Desregistrar imagen observada
-  observer.unobserve(nodo)
+  observer.unobserve(container)
 }
 // instanciar API IntersectionObserver
 const observer = new IntersectionObserver((entries) => {
-  entries.filter(isIntersecting).forEach(accion)
+  entries.filter(isIntersecting).forEach(loadImage)
 })
 
 export const registerImage = (image) => {
